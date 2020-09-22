@@ -5,6 +5,8 @@
     margin-right: auto;
     min-height: 30rem;
     margin-top: 10rem;
+    flex-grow: 1;
+    padding: 1rem;
 }
 
 body {
@@ -12,8 +14,10 @@ body {
 }
 
 #main-textarea {
-    width: 70rem;
+    background-color: #393939;
+    color: white;
     resize: none;
+    flex-grow: 1;
 }
 
 .btn {
@@ -38,4 +42,10 @@ body {
     display: flex;
     flex-direction: column;
     padding-right: 1rem;
+    flex-grow: 1;
+}
+
+.text-part {
+    display: flex;
+    flex-grow:10;
 }
