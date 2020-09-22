@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 30rem;
+    margin-top: 10rem;
+}
+
+body {
+    display: flex;
+}
+
+#main-textarea {
+    width: 70rem;
+    resize: none;
+}
+
+.btn {
+    max-height: 5rem;
+    flex-grow: 1;
+}
+
+.note-btn:hover {
+    background-color: #66CC99;
+}
+
+.selected-btn {
+    background-color: skyblue;
+}
+
+.manage-bar {
+    display: flex;
+    flex-direction: column;
+}
+
+.bar-left {
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;
+}
