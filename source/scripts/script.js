@@ -1,4 +1,5 @@
 let currentNote = {id: 0, name: "Note", content: "", creationDate: ""};
+let currentHighlightedNote;
 let notes = [currentNote];
 let maxId = 0;
 
@@ -8,7 +9,6 @@ function initDate(note){
 }
 
 function fillNotesBlock(notesList){
-    let notesHtml = "";
     const leftBar = document.getElementById("left-bar");
     leftBar.innerHTML = "";
     
@@ -16,8 +16,16 @@ function fillNotesBlock(notesList){
         let noteBlock = document.createElement("li");
         noteBlock.innerHTML = "<h2>" + notesList[i].name  + "</h2> <h5>" + notesList[i].creationDate + "</h5>";
         noteBlock.className = "note-nav-btn note-btn list-group-item";
-        noteBlock.onclick = function (){ noteSelectHandler(notesList[i]);}
+        noteBlock.onclick = function (){ noteSelectHandler(notesList[i]); highlightSelectedNote(noteBlock);}
+        if(currentNote === notesList[i]){
+            highlightSelectedNote(noteBlock);
+        }
         leftBar.append(noteBlock);
+        if(i == notesList.length - 1 && currentHighlightedNote == null){
+            currentNote = notesList[i];
+            highlightSelectedNote(noteBlock);
+            noteSelectHandler(currentNote);
+        }
     }
     maxId = localStorage.getItem("maxId");
 }
@@ -105,6 +113,14 @@ function findNoteById(id){
         resultNote == notes[0];
     }
     return resultNote
+}
+
+function highlightSelectedNote(noteBlock){
+    if(currentHighlightedNote != null){
+        currentHighlightedNote.classList.toggle("selected-btn", false);
+    }
+    noteBlock.classList.toggle("selected-btn", true);
+    currentHighlightedNote = noteBlock;
 }
 
 initDate(currentNote);
